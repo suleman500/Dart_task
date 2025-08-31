@@ -1,0 +1,150 @@
+int con = 1;
+
+class houm extends user {
+  houm([String? userName, String? pasword, int balance = 0])
+      : super(userName, pasword, balance);
+
+  void intfece() {
+    print("wolcoom to Home");
+
+    print("╔══════════════════════════════════════════╗");
+    print("║                 MAIN MENU                ║");
+    print("╠══════════════════════════════════════════╣");
+    print("║  1. Account Information                  ║");
+    print("║  2. Games                                ║");
+    print("║  3. Book a Trip                          ║");
+    print("║  4. Hotel Reservation                    ║");
+    print("║  5. Exit                                 ║");
+    print("╚══════════════════════════════════════════╝");
+    int s = int.parse(stdin.readLineSync()!);
+    switch (s) {
+      case 1:
+        printyouAcunt();
+        break;
+      case 1:
+        break;
+      case 1:
+        break;
+      case 1:
+        break;
+      case 1:
+        break;
+    }
+  }
+}
+
+class user {
+  String? username;
+  String? pass;
+  bool? neweAcunt = true;
+  int id = con;
+  int _balance = 0;
+
+  user([this.username, this.pass, int balance = 0, this.neweAcunt = false]) {
+    _balance = balance;
+    ++con;
+  }
+
+  int get balance => _balance;
+  set balance(int o) {
+    if (o >= 0) {
+      _balance = o;
+    }
+  }
+
+  void loss(int s) {
+    if (s > 0) {
+      s += _balance;
+    }
+  }
+
+  void plus(int s) {
+    if (s > 0) {
+      s -= _balance;
+    }
+  }
+
+  void displayAcounnt() {
+    for (var i in s1) {
+      print(""" userName :${i.username}
+   password :  ${i.pass}
+    ID : ${i.id}""");
+    }
+  }
+
+  void printyouAcunt() {
+    print("""useNeme  : $username 
+    password : $pass
+    balance : $_balance""");
+  }
+
+  void singup() {
+    if (neweAcunt == false) {
+      print("welcoom to Cruute New Acouunt : ");
+      print("1-Curute acunt\n 2-backe");
+      int s = int.parse(stdin.readLineSync()!);
+      switch (s) {
+        case 1:
+          stdout.write("pless Enter neme :");
+          username = stdin.readLineSync();
+
+          stdout.write("pless Enter pass :");
+          pass = stdin.readLineSync();
+
+          user a = user(username, pass);
+          s1.add(a);
+          break;
+        case 2:
+          break;
+      }
+    }
+  }
+
+  void login() {
+    if (neweAcunt != true) {
+      bool n = true;
+      int k = 1;
+      while (n) {
+        print("ples enter Neme");
+        String? neme = stdin.readLineSync();
+        bool? f;
+        bool? s;
+        for (var o in s1) {
+          if (o.username == neme) {
+            f = true;
+            break;
+          } else {
+            f = false;
+          }
+        }
+
+        print(" enter pass");
+        String? paas = stdin.readLineSync();
+        for (var i in s1) {
+          if (i.pass == paas) {
+            s = true;
+            break;
+          } else {}
+        }
+
+        if (f == true && s == true) {
+          print("yasssssssss");
+          n = false;
+        } else {
+          print("nooooooooooo");
+          n = true;
+        }
+      }
+    }
+  }
+}
+
+List<user> s1 = [user("suleman", "2000"), user("ali", "500")];
+
+void main() {
+  print("enter nem and pass");
+
+  houm s = houm();
+  s.singup();
+  s.intfece();
+}
